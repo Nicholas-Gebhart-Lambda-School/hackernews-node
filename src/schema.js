@@ -9,7 +9,7 @@ const typeDefs = gql`
   type Mutation {
     post(url: String!, description: String!): Link!
     signup(email: String!, password: String!, name: String!): AuthPayload
-    login(email: String!, password: String!): AuthPaylod
+    login(email: String!, password: String!): AuthPayload
   }
 
   type AuthPayload {
@@ -28,6 +28,7 @@ const typeDefs = gql`
     id: ID!
     description: String!
     url: String!
+    postedBy: String!
   }
 `;
 
