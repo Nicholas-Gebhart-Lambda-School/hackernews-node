@@ -3,7 +3,21 @@ const { gql } = require('apollo-server');
 const typeDefs = gql`
   type Query {
     info: String!
-    feed(filter: String, skip: Int, first: Int): [Link!]!
+    feed(
+      filter: String
+      skip: Int
+      first: Int
+      orderBy: LinkOrderByInput
+    ): [Link!]!
+  }
+
+  enum LinkOrderByInput {
+    description_ASC
+    description_DESC
+    url_ASC
+    url_DESC
+    createdAt_ASC
+    createdAt_DESC
   }
 
   type Mutation {
