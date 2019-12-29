@@ -8,7 +8,12 @@ const typeDefs = gql`
       skip: Int
       first: Int
       orderBy: LinkOrderByInput
-    ): [Link!]!
+    ): Feed!
+  }
+
+  type Feed {
+    links: [Link!]!
+    count: Int!
   }
 
   enum LinkOrderByInput {
