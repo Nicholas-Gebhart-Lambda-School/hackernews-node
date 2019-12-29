@@ -1,17 +1,5 @@
-const { ApolloServer, gql } = require('apollo-server');
-
-const typeDefs = gql`
-  type Query {
-    info: String!
-    feed: [Link!]!
-  }
-
-  type Link {
-    id: ID!
-    description: String!
-    url: String!
-  }
-`;
+const { ApolloServer } = require('apollo-server');
+const typeDefs = require('./schema');
 
 const links = [
   {
