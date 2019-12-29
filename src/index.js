@@ -1,18 +1,20 @@
 const { ApolloServer } = require('apollo-server');
 const typeDefs = require('./schema');
 
-const links = [
-  {
-    id: 'link-0',
-    url: 'howtographql.com',
-    description: 'stack tutorial',
-  },
-];
-
 const resolvers = {
   Query: {
     info: () => 'Api is listening',
-    feed: () => links,
+    feed: () => (root, args, context) => {
+      return context.prisma.links();
+    },
+  },
+  Mutation: {
+    post: (root, args, context) => {
+      return context.prisma.createLink({
+        url: args.url,
+        description: args.description,
+      });
+    },
   },
 };
 
