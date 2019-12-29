@@ -1,5 +1,6 @@
 const { ApolloServer } = require('apollo-server');
 const typeDefs = require('./schema');
+const { prisma } = require('./generated/prisma-client');
 
 const resolvers = {
   Query: {
@@ -18,6 +19,6 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers, context: { prisma } });
 
 server.listen().then(({ url }) => console.log(url));
